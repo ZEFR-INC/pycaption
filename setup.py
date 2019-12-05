@@ -14,7 +14,7 @@ requirements.update(all=sorted(set().union(*requirements.values())))
 
 setup(
     name='pycaption',
-    version='1.1.0',
+    version='1.1.1',
     description='Closed caption converter',
     long_description=open(README_PATH).read(),
     author='Tyler Hoyt',
