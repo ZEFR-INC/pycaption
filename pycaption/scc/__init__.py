@@ -351,10 +351,6 @@ class SCCReader(BaseReader):
         if self._handle_double_command(word):
             return
 
-        # HACK - Make sure buffer is ready by simulating 94ae
-        if self.buffer._position_tracer is None:
-            self._translate_command('94ae')
-
         # add to buffer
         self.buffer.add_chars(EXTENDED_CHARS[word])
 
@@ -447,6 +443,10 @@ class SCCReader(BaseReader):
         # check to see if the the bytes are recognized characters
         if byte1 not in CHARACTERS or byte2 not in CHARACTERS:
             return
+
+        # HACK - Make sure buffer is ready by simulating 94ae
+        if self.buffer._position_tracer is None:
+            self._translate_command('94ae')
 
         self.buffer.add_chars(CHARACTERS[byte1], CHARACTERS[byte2])
 
